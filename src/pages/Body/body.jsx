@@ -161,80 +161,240 @@ export const Body = () => {
                     img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_lighting_2._SY116_CB584596691_.jpg'
                 }
             ],
-        }, {
+        
+        }
+
+    ]
+    // return (
+    //     <>
+    //     <div className="grid-layout">
+           
+    //         {gridInfo.map((grid) => (
+    //             <div key={grid.id} className="grid-card" id={grid.id}>
+    //                 <p className='grid-title'>{grid.title}</p>
+    //                 <div className="card-internal-grid">
+    //                     {grid.child.map((child, childIndex) => (
+    //                         <div key={`${grid.id}-${childIndex}`} className='--internal-div' id={`${grid.id}-${childIndex}`}>
+    //                             <img src={child.img} alt={child.title} />
+    //                             <p>{child.title}</p>
+    //                         </div>
+    //                     ))}
+    //                 </div>
+    //             </div>
+    //         ))}
+         
+    //     </div>
+        
+    //     </>
+    // );
+    
+    return (
+        <div className="grid-layout">
+            {/* First grid card */}
+            <div key={gridInfo[0].id} className="grid-card" id={gridInfo[0].id}>
+                <p className='grid-title'>{gridInfo[0].title}</p>
+                <div className="card-internal-grid">
+                    {gridInfo[0].child.map((child, childIndex) => (
+                        <div key={`${gridInfo[0].id}-${childIndex}`} className='--internal-div' id={`${gridInfo[0].id}-${childIndex}`}>
+                            <img src={child.img} alt={child.title} />
+                            <p>{child.title}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Second grid card */}
+            <div key={gridInfo[1].id} className="grid-card" id={gridInfo[1].id}>
+                <p className='grid-title'>{gridInfo[1].title}</p>
+                <div className="card-internal-grid">
+                    {gridInfo[1].child.map((child, childIndex) => (
+                        <div key={`${gridInfo[1].id}-${childIndex}`} className='--internal-div' id={`${gridInfo[1].id}-${childIndex}`}>
+                            <img src={child.img} alt={child.title} />
+                            <p>{child.title}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Third grid card */}
+            <div key={gridInfo[2].id} className="grid-card" id={gridInfo[2].id}>
+                <p className='grid-title'>{gridInfo[2].title}</p>
+                <div className="card-internal-grid">
+                    {gridInfo[2].child.map((child, childIndex) => (
+                        <div key={`${gridInfo[2].id}-${childIndex}`} className='--internal-div' id={`${gridInfo[2].id}-${childIndex}`}>
+                            <img src={child.img} alt={child.title} />
+                            <p>{child.title}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            {/* third grid card
+             */}
+
+             <div className="sign-box">
+                  <div className="sign-container-internal">
+                      <h3>Sign in for your best</h3>
+                      <h3>experience</h3>
+                      <button className="sign-box-button">Sign in securely</button>
+                  </div>
+                  <div className="second-container">
+
+                  </div>
+             </div>
+        </div>
+    );
+    
+}
+
+export const GridLayout2 = ()=>{
+    const gridInfo = [
+        {
             id: "grid-card-major-1",
-            title: 'Starting ₹99 | All your home improvement needs ',
+            title: 'Appliances for your home | Up to 55% off',
             child: [
                 {
-                    title: "Spin mops,wipes and more",
-                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img23/HI/SYED/ATF/QC-adapts_186x116_4._SY116_CB600489960_.jpg'
+                    title: "Air Conditioners",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08RDL6H79._SY116_CB667322346_.jpg'
                 },
                 {
-                    title: "Bathroom hardware & accessories",
-                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img23/HI/SYED/ATF/QC-adapts_186x116_3._SY116_CB600489960_.jpg'
+                    title: "Refrigerator",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08345R1ZW._SY116_CB667322346_.jpg'
                 },
                 {
-                    title: "Hammer , screwdrivers & more",
-                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img23/HI/SYED/ATF/QC-adapts_186x116_7._SY116_CB600489960_.jpg'
+                    title: "Microwaves",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B07G5J5FYP._SY116_CB667322346_.jpg'
                 },
                 {
-                    title: "Extension Boards , plugs & more",
-                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img23/HI/SYED/ATF/QC-adapts_186x116_5._SY116_CB600489960_.jpg'
+                    title: "Washing Machines",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/186x116---wm._SY116_CB667322346_.jpg'
                 }
             ],
+        },
+        {
+            id: "grid-card-major-1",
+            title: 'Up to 60% off | Styles for men ',
+            child: [
+                {
+                    title: "Clothing",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PF_MF/MF-1-186-116._SY116_CB636110853_.jpg'
+                },
+                {
+                    title: "Footwear",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PF_MF/MF-2-186-116._SY116_CB636110853_.jpg'
+                },
+                {
+                    title: "Watches",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PF_MF/MF-3-186-116._SY116_CB636110853_.jpg'
+                },
+                {
+                    title: "Bags & Wallets",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PF_MF/MF-4-186-116._SY116_CB636110853_.jpg'
+                }
+            ],
+        },
+        {
+            id: "grid-card-major-1",
+            title: 'Revamp your home in style',
+            child: [
+                {
+                    title: "Cushion and Covers",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_furnishings_2._SY116_CB584596691_.jpg'
+                },
+                {
+                    title: "Figurines ,vases and more ",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_decor_1._SY116_CB584596691_.jpg'
+                },
+                {
+                    title: "Home storage",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_storage_1._SY116_CB584596691_.jpg'
+                },
+                {
+                    title: "Light Solutions",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_lighting_2._SY116_CB584596691_.jpg'
+                }
+            ],
+        
+        },
+        {
+            id: "grid-card-major-1",
+            title: 'Revamp your home in style',
+            child: [
+                {
+                    title: "Cushion and Covers",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_furnishings_2._SY116_CB584596691_.jpg'
+                },
+                {
+                    title: "Figurines ,vases and more ",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_decor_1._SY116_CB584596691_.jpg'
+                },
+                {
+                    title: "Home storage",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_storage_1._SY116_CB584596691_.jpg'
+                },
+                {
+                    title: "Light Solutions",
+                    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_lighting_2._SY116_CB584596691_.jpg'
+                }
+            ],
+        
         }
 
     ]
     return (
-        <div className="grid-layout">
-            {gridInfo.map((grid) => (
-                <div key={grid.id} className="grid-card" id={grid.id}>
-                    <p className='grid-title'>{grid.title}</p>
-                    <div className="card-internal-grid">
-                        {grid.child.map((child, childIndex) => (
-                            <div key={`${grid.id}-${childIndex}`} className='--internal-div' id={`${grid.id}-${childIndex}`}>
-                                <img src={child.img} alt={child.title} />
-                                <p>{child.title}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ))}
+        <div className="second-grid-layout">
+          {gridInfo.map((grid) => (
+            <div className="second-grid-card" key={grid.id}>
+              <p>{grid.title}</p>
+              <div className="second-internal-grid">
+                {grid.child.map((childElement, index) => (
+                  <div key={`${grid.id}-${index}`} className="--internal-div">
+                    <img src={childElement.img} alt={childElement.title} />
+                    <p>{childElement.title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-    );
-    
-    
-}
+      );
+      
 
+}
 
 export const Deals = () => {
     const objects = [
       {
+        id: 1,
         title: "iQOO Z9 5G",
         deal: "upto 30% off",
         img: "https://m.media-amazon.com/images/I/41snmTn9mrL._AC_SY200_.jpg"
       },
       {
+        id: 2,
         title: "iQOO Z9 5G",
         deal: "upto 30% off",
         img: "https://m.media-amazon.com/images/I/41WnWm3IjiL._AC_SY200_.jpg"
       },
       {
+        id: 3,
         title: "iQOO Z9 5G",
         deal: "upto 30% off",
         img: "https://m.media-amazon.com/images/I/411gvmvNQzL._AC_SY200_.jpg"
       },
       {
+        id: 4,
         title: "iQOO Z9 5G",
         deal: "upto 30% off",
         img: "https://m.media-amazon.com/images/I/411iWoJEJjL._AC_SY200_.jpg"
       },
       {
+        id: 5,
         title: "iQOO Z9 5G",
         deal: "upto 30% off",
         img: "https://m.media-amazon.com/images/I/41WnWm3IjiL._AC_SY200_.jpg"
       },
       {
+        id: 6,
         title: "iQOO Z9 5G",
         deal: "upto 30% off",
         img: "https://m.media-amazon.com/images/I/41GsqdiCvOL._AC_SY200_.jpg"
@@ -246,8 +406,8 @@ export const Deals = () => {
     <div className="deal-outer-grid">
        <h2>Todays Deals</h2>
       <div className="deal-grid">
-        {objects.map((obj, index) => (
-          <div className="deal-item" key={index}>
+        {objects.map((obj) => (
+          <div className="deal-item" key={obj.id}>
             <img src={obj.img} alt="Product" />
             <div className="details">
               <h3>{obj.deal}</h3>
@@ -258,7 +418,8 @@ export const Deals = () => {
       </div>
     </div>
     );
-  };
+};
+
 
 
   

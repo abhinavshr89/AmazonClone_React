@@ -16,14 +16,18 @@ function Header(props) {
 
             <div className="header-search">
                 {/* Use state variable as value and update it on change */}
-                <input 
+                <button className="all-btn">
+                    All
+                </button>
+                <input
+                   
                     className="header-searchInput" 
                     type="text" 
                     value={props.searchText}
                     onChange={(e)=>props.setSearchText(e.target.value)}
                     placeholder="Search products..."
                 />
-                <button>
+                <button className="search-button">
 
                 <SearchIcon   className="header-SearchIcon"></SearchIcon>
                 </button>

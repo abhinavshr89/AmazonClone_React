@@ -12,10 +12,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { Categories, Carousal, Deals, Body, HomeFurnishing } from './src/pages/Body/body';
+import { Categories, Carousal, Deals, Body, HomeFurnishing, GridLayout2 } from './src/pages/Body/body';
 
-
-
+import Slider from './src/pages/Body/slider';
+import Footer from './src/pages/footer/footer';
 
 const App = () => {
 
@@ -23,8 +23,8 @@ const App = () => {
   return (
     <>
       <Header searchText={searchText} setSearchText={setSearchText} />
-      {/* <Categories />
-            <Carousal />
+       <Categories />
+            {/*<Carousal />
             <Body />
             <Deals />
             <HomeFurnishing /> */}
@@ -35,13 +35,30 @@ const App = () => {
   )
 }
 // root.render(<App />);
-
+const Home = ()=>{
+  return (
+    <>
+    <Header/>
+    <Categories/>
+    <Slider/>
+    <Body/>
+    <GridLayout2/>
+    <Deals />
+    <HomeFurnishing />
+    <Footer/>
+    </>
+  )
+}
 
 const router = createBrowserRouter([
   {
     path: "/products",
     element: <App />,
   },
+  {
+    path:"/",
+    element:<Home/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
