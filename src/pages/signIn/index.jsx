@@ -46,8 +46,10 @@ const SignIn = () => {
   return (
     <>
       <div className="main-signin-container">
-        <div className="logo-container"></div>
         <div className="login-form">
+        <div className="logo-container">
+          <img src="https://press.aboutamazon.in/static-files/3ca754e0-9176-4d89-8174-056267008479" alt="" />
+        </div>
           <form onSubmit={handleSubmit}>
             <div className="login-form-firstbox">
               <label htmlFor="email-or-phone">

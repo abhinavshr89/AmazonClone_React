@@ -23,6 +23,7 @@ import CreateNewAccountComponent from './src/pages/signIn/createAccount/createAc
 const App = () => {
 
   const [searchText, setSearchText] = useState('');
+  const [cart, setCart] = useState([]);
   return (
     <>
       <Header searchText={searchText} setSearchText={setSearchText} />
