@@ -62,7 +62,7 @@ const productsData = [
         id: 15,
         title: "Fitbit Versa 3 Health & Fitness Smartwatch",
     },
-    // Add more items as needed
+   
 ];
 
 
@@ -128,7 +128,11 @@ const ProductSearch = (props) => {
                         return (<>
                         <div key= {id} className="productBox">
                         <img src={thumbnail}></img>
+                         <div className="product-details">
+
                         <h2 >{title}</h2>
+                         <button className="add-to-cart">Add to cart</button>
+                         </div>
                         </div>
                         </>);
 

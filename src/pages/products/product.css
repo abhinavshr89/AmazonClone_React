@@ -2,20 +2,36 @@
    
   
     display: flex;
-    gap: 20px;
+ 
     width: 80vw;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-    /* flex-direction: column; */
+
     
     img{
         width: 200px;
         height: 200px;
-        border: 2px solid black;
+       
     }
     h2{
         margin-top: 30px;
+        margin-left: 10px;
+    }
+    .product-details{
+        background-color: #FFFFFF;
+       display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .add-to-cart{
+        align-self:self-start;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        border-radius:30px;
+        width: 90px;
+        background-color: #F7CA00;
     }
 }
 input{

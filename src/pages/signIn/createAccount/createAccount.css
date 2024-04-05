@@ -1,0 +1,42 @@
+.create-account-container{
+    width: 100%;
+    height: 100vh !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.create-account-form{
+    width: 30%;
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    height: auto;
+    border: 3px solid black;
+  
+}
+.create-account-firstbox{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    label{
+        margin-left: 20px;
+    }
+    input{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.create-account-button{
+    width: 80%;
+    margin-bottom: 10px;
+}

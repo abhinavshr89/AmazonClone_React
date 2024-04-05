@@ -16,6 +16,9 @@ import { Categories, Carousal, Deals, Body, HomeFurnishing, GridLayout2 } from '
 
 import Slider from './src/pages/Body/slider';
 import Footer from './src/pages/footer/footer';
+import SignIn from './src/pages/signIn';
+import CreateNewAccountComponent from './src/pages/signIn/createAccount/createAccount';
+
 
 const App = () => {
 
@@ -24,10 +27,7 @@ const App = () => {
     <>
       <Header searchText={searchText} setSearchText={setSearchText} />
        <Categories />
-            {/*<Carousal />
-            <Body />
-            <Deals />
-            <HomeFurnishing /> */}
+           
       <ProductSearch searchText={searchText} setSearchText={setSearchText} />
 
     </>
@@ -58,6 +58,12 @@ const router = createBrowserRouter([
   {
     path:"/",
     element:<Home/>
+  },{
+    path:"/signin",
+    element:<SignIn/>
+  },{
+   path: "/create",
+    element:<CreateNewAccountComponent/>
   }
 ]);
 
@@ -66,7 +72,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
 
 
 
