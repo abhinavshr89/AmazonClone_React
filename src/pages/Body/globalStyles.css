@@ -217,3 +217,8 @@ Swiper{
         }
     }
 }
+
+.header-option-shoppingIcon{
+    text-decoration: none;
+    color: white;
+}

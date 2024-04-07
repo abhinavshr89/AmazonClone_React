@@ -43,6 +43,7 @@ const CreateNewAccountComponent = () => {
       }
 
       console.log("Account created successfully");
+      alert("Account Created Successfully")
       // Optionally, you can redirect the user to a different page upon successful account creation
     } catch (error) {
       console.error("Error:", error.message);
@@ -54,9 +55,12 @@ const CreateNewAccountComponent = () => {
   return (
     <>
       <div className="create-account-container">
-        <div className="logo"></div>
+        <div className="logo">
+          <img src="https://press.aboutamazon.in/static-files/3ca754e0-9176-4d89-8174-056267008479" alt="" />
+        </div>
         <div className="create-account-form">
-          <form onSubmit={handleSubmit}>
+          <h1>Create Account</h1>
+          <form onSubmit={handleSubmit} className="--create-account-form">
             <div className="create-account-firstbox">
               <label htmlFor="yourname">Your name</label>
               <input

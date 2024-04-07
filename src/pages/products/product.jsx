@@ -1,75 +1,135 @@
 import React, { useState, useEffect } from "react";
-import './product.css';
+import "./product.css";
+import { useContext } from "react";
+import noteContext from "../../../context/noteContext";
 
 const ProductSearch = (props) => {
-    const [result, setResult] = useState([]);
-    const [allProducts, setAllProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+  const [result, setResult] = useState([]);
+  const [allProducts,setAllProducts]=useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // State for current page number
+  const itemsPerPage = 10; // Number of items to display per page
+  const contextValues = useContext(noteContext);
 
-    useEffect(() => {
-        fetch('https://dummyjson.com/products')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json(); 
-            })
-            .then(data => {
-                console.log(data.products); 
-                setAllProducts(data.products);
-                setResult(data.products);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-    },[]);
+  useEffect(() => {
+    let url = "http://localhost:1000/api/v1/products";
 
-    useEffect(() => {
-        filterProducts(props.searchText);
-    }, [props.searchText]);
-
-    const filterProducts = (query) => {
-        if (!query) {
-            setResult(allProducts); 
+  
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setResult(data);
+        setAllProducts(data); // Set allProducts state with fetched data
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, []);
+  
 
-        const filtered = allProducts.filter(product =>
-            product.title.toLowerCase().includes(query.toLowerCase())
-        );
-        setResult(filtered);
-    };
+  const filterProducts = (query) => {
+    if (!query) {
+      // Display all products if query is empty
+      setResult(allProducts); // Change this to setResult(result);
+    } else {
+      const filtered = allProducts.filter((product) =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setResult(filtered);
+    }
+  };
+  useEffect(() => {
+    filterProducts(contextValues.searchText);
+  }, [contextValues.searchText]);
 
-    const addToCart = (product) => {
-        setCart([...cart, product]);
-        console.log(cart);
-    };
 
-    return (
-        <>
-            <div>
-                <h3 style={{ textAlign: 'center' }}>Amazon Products</h3>
-                {result.map(({ id, title, thumbnail }) => (
-                    <div key={id} className="productBox">
-                        <img src={thumbnail} alt={title} />
-                        <div className="product-details">
-                            <h2>{title}</h2>
-                            <button className="add-to-cart" onClick={() => addToCart({ id, title,thumbnail })}>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                ))}
+  
+
+  const addToCart = (product) => {
+    // Make a POST request to the backend endpoint
+    fetch('http://localhost:1000/api/v1/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: product.title,
+        image: product.image,
+        price: product.price,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to add item to cart');
+        }
+        // If the request is successful, log a success message
+        console.log('Item added to cart successfully');
+        // Optionally, update contextValues.cart with the new product
+        contextValues.setCart([...contextValues.cart, product]);
+      })
+      .catch(error => {
+        // Log any errors that occur during the request
+        console.error('Error adding item to cart:', error);
+      });
+  };
+
+  // Calculate index range for the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = result.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <>
+      <div className="product-page">
+       
+        {currentItems.map((product, index) => (
+          <div key={index} className="productBox">
+            <div className="product-image-box">
+            <img src={product.image} alt={product.title} />
             </div>
-            {/* <div className="cart">
-                <h3>Cart</h3>
-                <ul>
-                    {cart.map((item, index) => (
-                        <li key={index}>{item.title}</li>
-                    ))}
-                </ul>
-            </div> */}
-        </>
-    );
+            <div className="product-details">
+              <h2>{product.title}</h2>
+              <p className="product-price">Price: {product.price}</p>
+              {/* Call addToCart with the product object */}
+              <button
+                className="add-to-cart"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Pagination */}
+     {/* Pagination */}
+<div className="pagination">
+  {/* Left button */}
+  <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+    {"<"}
+  </button>
+  {/* Page numbers */}
+  {[...Array(Math.ceil(result.length / itemsPerPage)).keys()].map((number) => (
+    <button key={number} onClick={() => paginate(number + 1)} className={currentPage === number + 1 ? "active" : ""}>
+      {number + 1}
+    </button>
+  ))}
+  {/* Right button */}
+  <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(result.length / itemsPerPage)}>
+    {">"}
+  </button>
+</div>
+
+    </>
+  );
 };
 
 export default ProductSearch;
