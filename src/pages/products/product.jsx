@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./product.css";
 import { useContext } from "react";
 import noteContext from "../../../context/noteContext";
+import { useParams } from "react-router-dom";
 
-const ProductSearch = (props) => {
+const ProductSearch = () => {
   const [result, setResult] = useState([]);
-  const [allProducts,setAllProducts]=useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // State for current page number
   const itemsPerPage = 10; // Number of items to display per page
   const contextValues = useContext(noteContext);
+  const searchParams = useParams();
+  
 
   useEffect(() => {
     let url = "http://localhost:1000/api/v1/products";
 
-  
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -30,12 +32,13 @@ const ProductSearch = (props) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   }, []);
+
   
 
   const filterProducts = (query) => {
     if (!query) {
       // Display all products if query is empty
-      setResult(allProducts); // Change this to setResult(result);
+      setResult(allProducts);
     } else {
       const filtered = allProducts.filter((product) =>
         product.title.toLowerCase().includes(query.toLowerCase())
@@ -43,19 +46,17 @@ const ProductSearch = (props) => {
       setResult(filtered);
     }
   };
+
   useEffect(() => {
-    filterProducts(contextValues.searchText);
-  }, [contextValues.searchText]);
-
-
-  
+    filterProducts(searchParams.searchText); // Filter products based on the search text from URL params
+  }, [searchParams.searchText, allProducts]); // Update when search text or products change
 
   const addToCart = (product) => {
     // Make a POST request to the backend endpoint
-    fetch('http://localhost:1000/api/v1/cart', {
-      method: 'POST',
+    fetch("http://localhost:1000/api/v1/cart", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         title: product.title,
@@ -63,18 +64,18 @@ const ProductSearch = (props) => {
         price: product.price,
       }),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to add item to cart');
+          throw new Error("Failed to add item to cart");
         }
         // If the request is successful, log a success message
-        console.log('Item added to cart successfully');
+        console.log("Item added to cart successfully");
         // Optionally, update contextValues.cart with the new product
         contextValues.setCart([...contextValues.cart, product]);
       })
-      .catch(error => {
+      .catch((error) => {
         // Log any errors that occur during the request
-        console.error('Error adding item to cart:', error);
+        console.error("Error adding item to cart:", error);
       });
   };
 
@@ -89,11 +90,10 @@ const ProductSearch = (props) => {
   return (
     <>
       <div className="product-page">
-       
         {currentItems.map((product, index) => (
           <div key={index} className="productBox">
             <div className="product-image-box">
-            <img src={product.image} alt={product.title} />
+              <img src={product.image} alt={product.title} />
             </div>
             <div className="product-details">
               <h2>{product.title}</h2>
@@ -110,24 +110,34 @@ const ProductSearch = (props) => {
         ))}
       </div>
       {/* Pagination */}
-     {/* Pagination */}
-<div className="pagination">
-  {/* Left button */}
-  <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
-    {"<"}
-  </button>
-  {/* Page numbers */}
-  {[...Array(Math.ceil(result.length / itemsPerPage)).keys()].map((number) => (
-    <button key={number} onClick={() => paginate(number + 1)} className={currentPage === number + 1 ? "active" : ""}>
-      {number + 1}
-    </button>
-  ))}
-  {/* Right button */}
-  <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(result.length / itemsPerPage)}>
-    {">"}
-  </button>
-</div>
-
+      <div className="pagination">
+        {/* Left button */}
+        <button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          {"<"}
+        </button>
+        {/* Page numbers */}
+        {[...Array(Math.ceil(result.length / itemsPerPage)).keys()].map(
+          (number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number + 1)}
+              className={currentPage === number + 1 ? "active" : ""}
+            >
+              {number + 1}
+            </button>
+          )
+        )}
+        {/* Right button */}
+        <button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === Math.ceil(result.length / itemsPerPage)}
+        >
+          {">"}
+        </button>
+      </div>
     </>
   );
 };

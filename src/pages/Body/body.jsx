@@ -255,7 +255,7 @@ export const GridLayout2 = () => {
       ],
     },
     {
-      id: "grid-card-major-1",
+      id: "grid-card-major-2",
       title: "Up to 60% off | Styles for men ",
       child: [
         {
@@ -277,7 +277,7 @@ export const GridLayout2 = () => {
       ],
     },
     {
-      id: "grid-card-major-1",
+      id: "grid-card-major-3",
       title: "Revamp your home in style",
       child: [
         {
@@ -299,7 +299,7 @@ export const GridLayout2 = () => {
       ],
     },
     {
-      id: "grid-card-major-1",
+      id: "grid-card-major-4",
       title: "Revamp your home in style",
       child: [
         {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./createAccount.css";
-
+import { Link } from "react-router-dom";
 const CreateNewAccountComponent = () => {
   // Step 1: Define state variables for form data
   const [name, setName] = useState("");
@@ -67,6 +67,7 @@ const CreateNewAccountComponent = () => {
                 id="yourname"
                 type="text"
                 value={name}
+                placeholder="Enter your name"
                 onChange={handleNameChange}
               />
             </div>
@@ -76,6 +77,7 @@ const CreateNewAccountComponent = () => {
                 id="your-mobileno"
                 type="text"
                 value={phoneNumber}
+                placeholder="Enter your phone No (10 digits)"
                 onChange={handlePhoneNumberChange}
               />
             </div>
@@ -85,6 +87,7 @@ const CreateNewAccountComponent = () => {
                 id="your-email"
                 type="email"
                 value={email}
+                placeholder="Enter your email"
                 onChange={handleEmailChange}
               />
             </div>
@@ -94,10 +97,11 @@ const CreateNewAccountComponent = () => {
                 id="your-password"
                 type="password"
                 value={password}
+                placeholder=""
                 onChange={handlePasswordChange}
               />
             </div>
-
+              <h7>Already have an account <Link to="http://localhost:5173/signin">Sign in</Link> </h7>
             <button className="create-account-button" type="submit">Create Account</button>
           </form>
         </div>

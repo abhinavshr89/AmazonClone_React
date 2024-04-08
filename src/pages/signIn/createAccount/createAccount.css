@@ -72,3 +72,9 @@ input:focus {
     position: absolute;
     top: 20px;
 }
+
+h7{
+    text-align: left;
+    padding: 3px;
+    padding-bottom: 7pc;
+}
