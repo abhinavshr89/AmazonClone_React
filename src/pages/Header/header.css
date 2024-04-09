@@ -12,12 +12,33 @@
         width: 50px;
         background-color: #cd9042;
         margin-bottom: 2px;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
     z-index: 100000000;
+    .location-box{
+        display: flex;
+        margin-right: 10px;
+        color: white;
+    }
+    .location-p2{
+        font-weight: 800;
+    }
+    .location-p1{
+        color:#CCCCCC ;
+        font-size: 13.5px;
+        font-weight: 600;
+    }
+    .location-box-details{
+        display: flex;
+        flex-direction: column;
+    }
+    .location-box-logo{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }    
 }
-
 .header-logo{
     width: 100px;
     object-fit: contain;
@@ -28,16 +49,15 @@
     display: flex;
     flex: 1;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 45px;
     padding-top: 2px;  
 }
-.header-search:hover{
+/* .header-search:hover{
     border: 4px solid orange;
     background-color: orange;
     padding-top: 2px;
-    
-}
+} */
 
 .header-searchInput{
     height: 40px;
@@ -93,8 +113,8 @@
     background-color: rgb(228, 205, 205);
     width: 50px;
     margin-bottom: 2px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
  
 }
 button{
@@ -116,4 +136,28 @@ button{
 .header-signin{
     text-decoration: none;
     color: white;
+}
+
+
+.country-box{
+    color: white;
+    display: flex;
+    width: 70px;
+    padding-left: 6px;
+    align-items: center;
+    .country-logo{
+        padding: 3px;
+    }
+    img{
+        height: 15px;
+        width: 18px;
+    }
+    .country-language{
+        display: flex;
+        padding-left: 6px;
+    }
+    p{
+        font-weight: 600;
+    }
+
 }

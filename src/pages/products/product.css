@@ -11,11 +11,11 @@
     display: flex;
 
     width: 80vw;
-    border: 1px solid rgb(228, 207, 207);
+  
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-    
+    background-color:#F7F7F7 ;
     
     img{
         width: 200px;
@@ -50,6 +50,10 @@
     }
 }
 
+.productBox{
+    border: 1px solid #F7F7F7;
+}
+
 .add-to-cart:hover,.add-to-cart:focus{
    box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
 }
@@ -59,7 +63,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px 20px 10px 20px;
-    background-color: rgb(243, 233, 233);
+    background-color: #F7F7F7;
 }
 input{
     height: 40px;

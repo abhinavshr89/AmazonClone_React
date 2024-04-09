@@ -109,6 +109,8 @@ const ProductSearch = () => {
           </div>
         ))}
       </div>
+
+      
       {/* Pagination */}
       <div className="pagination">
         {/* Left button */}

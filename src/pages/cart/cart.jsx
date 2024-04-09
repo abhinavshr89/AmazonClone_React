@@ -16,11 +16,9 @@ const Cart = () => {
         return response.json();
       })
       .then((data) => {
-       
         // Update cart items state with the data fetched from the backend
         setCartItems(data);
-        toast.success('Message successfully sent!', { autoClose: 3000 });
-        
+        toast.success("Message successfully sent!", { autoClose: 3000 });
       })
       .catch((error) => {
         console.error("Error fetching cart items:", error);
@@ -37,7 +35,7 @@ const Cart = () => {
           throw new Error("Failed to remove item from cart");
         }
         // Optionally, update the UI state only after a successful response from the backend
-        setCartItems(cartItems.filter(item => item._id !== itemId)); // Update to filter by item ID
+        setCartItems(cartItems.filter((item) => item._id !== itemId)); // Update to filter by item ID
       })
       .catch((error) => {
         // Handle errors according to your application's requirements
@@ -45,32 +43,39 @@ const Cart = () => {
         // Optionally, display an error message to the user
       });
   };
-  
 
   return (
     <div className="cart">
-      
+
+
       <div className="cart-items">
         <h2 className="cart-heading">Shopping Cart</h2>
         {cartItems.map((item, index) => (
           <div key={item._id} className="cart-item">
-            <img src={item.image} alt={item.title} />
-            <div className="details">
-            <p>{item.title}</p>
-            <button
-              className="remove-from-cart"
-              onClick={() => removeFromCart(item._id)} // Pass the item ID to removeFromCart
-            >Remove from Cart</button>
+            <div className="cart-item-image">
 
+            <img src={item.image} alt={item.title} />
+            </div>
+            <div className="details">
+              <p>{item.title}</p>
+              <button
+                className="remove-from-cart"
+                onClick={() => removeFromCart(item._id)} // Pass the item ID to removeFromCart
+              >
+                Remove from Cart
+              </button>
             </div>
           </div>
-        
         ))}
-       
+      </div>
+
+
+
+      <div className="side-bar">
+
       </div>
     </div>
   );
 };
 
 export default Cart;
-
