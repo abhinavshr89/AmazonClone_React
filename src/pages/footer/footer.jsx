@@ -75,36 +75,41 @@ const Footer = () => {
         <div className="footer-tertiary">
           <div className="footer-tertiary-grid-container">
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>AbeBooks</h6>
+              <p>Books,art & collectibles</p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>Amazon Web Services</h6>
+              <p>Scalable Cloud Computing Services </p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>Audible</h6>
+              <p>Download
+              Audio Books</p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>Shopbop</h6>
+              <p>Designer
+              Fashion Brands</p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>	IMDb</h6>
+              <p>Movies, TV
+              & Celebrities</p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>Amazon Business</h6>
+              <p>Everything For
+              Your Business</p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>	Prime Now</h6>
+              <p>2-hour delivery on Everyday items</p>
             </div>
             <div className="grid-items">
-              <h6>Sell on Amazon.ae</h6>
-              <p>Sell globally, start with UAE</p>
+              <h6>Amazon Prime Music</h6>
+              <p>100 million songs, ad-free
+              Over 15 million podcast episodes</p>
             </div>
           </div>
         </div>
