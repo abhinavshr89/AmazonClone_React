@@ -44,29 +44,37 @@ const register = async (req, res) => {
 };
 
 // Controller function for the user Login
-const Login= async (req,res)=>{
-    try{
-      const {email,password}= req.body;
+const Login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-      const userExist = await Member.findOne({ email: email});
-      if(!userExist){
-        return res.status(400).json({message: "Invalid Credentials"});
-      }
+    // Find the user by email
+    const userExist = await Member.findOne({ email: email });
 
-      //Now we need to compare the password 
-      const user = await bcrypt.compare(password, userExist.password);
-    if(user){
-        res.status(200)
-      .json({ message: "login Successful",});
-    }else{
-        res.status(401).json({message : "Ivalid email or password"});
+    if (!userExist) {
+      return res.status(400).json({ message: "Invalid Credentials" });
     }
 
+    // Compare the provided password with hashed password in the database
+    const isPasswordValid = await bcrypt.compare(password, userExist.password);
 
-    }catch(error){
-        res.status(500).json('Internal Server Error');
+    if (isPasswordValid) {
+      // Login successful, return username along with success message
+      res.status(200).json({
+        message: "Login Successful",
+        username: userExist.username, // Assuming username is a field in your Member model
+        exists:true
+      });
+    } else {
+      // Password does not match
+      res.status(401).json({ message: "Invalid email or password" });
     }
-}
+  } catch (error) {
+    // Server error
+    console.error("Login Error:", error);
+    res.status(500).json('Internal Server Error');
+  }
+};
 
 // Export the controller functions
 module.exports = { home, register, Login };

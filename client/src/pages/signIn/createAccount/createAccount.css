@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-   
+    background-color: rgba(213, 213, 213, 0.864);
+    
    
 }
 
@@ -73,8 +73,6 @@ input:focus {
     top: 20px;
 }
 
-h7{
-    text-align: left;
-    padding: 3px;
-    padding-bottom: 7pc;
+input{
+    padding-left: 10px;
 }

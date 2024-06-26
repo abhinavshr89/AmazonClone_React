@@ -1,13 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import Header from "./src/pages/Header/header";
-const parent = document.getElementById("root");
-const root = ReactDOM.createRoot(parent);
 import ProductSearch from "./src/pages/products/product";
-
-const AmazonLogo = <div className="amazon-logo"></div>;
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import {
   Categories,
   Deals,
@@ -15,39 +10,31 @@ import {
   HomeFurnishing,
   GridLayout2,
 } from "./src/pages/Body/body";
-
 import Slider from "./src/pages/Body/slider";
 import Footer from "./src/pages/footer/footer";
 import SignIn from "./src/pages/signIn";
 import CreateNewAccountComponent from "./src/pages/signIn/createAccount/createAccount";
 import Cart from "./src/pages/cart/cart";
-
 import NoteState from "./context/noteState";
 
 const Products = () => {
   return (
-    <>
-      <NoteState>
-        <Header />
-
-        <ProductSearch />
-      </NoteState>
-    </>
+    <NoteState>
+      <Header />
+      <ProductSearch />
+    </NoteState>
   );
 };
 
 const CartPage = () => {
   return (
-    <>
-      <NoteState>
-        <Header />
-        <Cart />
-      </NoteState>
-    </>
+    <NoteState>
+      <Header />
+      <Cart />
+    </NoteState>
   );
 };
 
-// root.render(<App />);
 const Home = () => {
   return (
     <>
@@ -65,10 +52,6 @@ const Home = () => {
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
     path: "/signin",
     element: <SignIn />,
   },
@@ -77,7 +60,7 @@ const router = createBrowserRouter([
     element: <CreateNewAccountComponent />,
   },
   {
-    path: "cart",
+    path: "/cart",
     element: <CartPage />,
   },
   {
@@ -85,8 +68,15 @@ const router = createBrowserRouter([
     element: <Products />,
   },
   {
-    path:"/products",
+    path: "/products",
     element: <Products />,
+  },
+  {
+    path: "/:username",
+    element: <Home />,
+  },{
+    path: "/",
+    element: <Home />,
   }
 ]);
 
